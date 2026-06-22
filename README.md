@@ -12,7 +12,7 @@ Aplicação web para dividir despesas em grupo — viagens, repúblicas, casais 
 
 **Detalhe do grupo — gastos e cálculo de dívidas:**
 
-![Detalhe do grupo](./docs/screenshots/group-detail.png)
+![Detalhe do grupo](./docs/screenshots/groups-detail.png)
 
 ## Funcionalidades
 
@@ -130,4 +130,4 @@ A API utiliza JWT para autenticação:
 
 Desenvolvido por **Rahul** como projeto de portfólio.
 
-[LinkedIn](#) · [GitHub](#)
+[LinkedIn](https://www.linkedin.com/in/rahul-sbaraglini-couto/) · [GitHub](https://github.com/rahulsbaraglini)
