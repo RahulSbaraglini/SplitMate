@@ -1,0 +1,118 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>{{ group?.name }}</span>
+  <span class="spacer"></span>
+  <button mat-raised-button color="accent" (click)="showExpenseForm()">
+    <mat-icon>add</mat-icon>
+    Novo gasto
+  </button>
+</mat-toolbar>
+
+<div class="container" *ngIf="!isLoading">
+
+  <mat-card *ngIf="showAddExpense" class="expense-form-card">
+    <mat-card-header>
+      <mat-card-title>Novo gasto</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="expenseForm" (ngSubmit)="addExpense()">
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Descrição</mat-label>
+          <input matInput formControlName="description" placeholder="Ex: Jantar">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Valor total (R$)</mat-label>
+          <input matInput formControlName="amount" type="number" (change)="onAmountChange()">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Quem pagou?</mat-label>
+          <mat-select formControlName="paidByUserId">
+            <mat-option *ngFor="let member of group?.members" [value]="member.userId">
+              {{ member.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <h3>Divisão</h3>
+        <div formArrayName="splits">
+          <div *ngFor="let split of splits.controls; let i = index" [formGroupName]="i" class="split-row">
+            <span class="member-name">{{ getMemberName(group?.members?.[i]?.userId ?? '') }}</span>
+            <mat-form-field appearance="outline" class="split-amount">
+              <mat-label>Valor (R$)</mat-label>
+              <input matInput formControlName="amount" type="number">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+        <div class="form-actions">
+          <button mat-raised-button color="primary" type="submit">Salvar</button>
+          <button mat-button type="button" (click)="showAddExpense = false">Cancelar</button>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="content-grid">
+
+    <div class="expenses-section">
+      <h2>Gastos</h2>
+
+      <div *ngIf="expenses.length === 0" class="empty-state">
+        <mat-icon>receipt_long</mat-icon>
+        <p>Nenhum gasto registrado ainda.</p>
+      </div>
+
+      <mat-card *ngFor="let expense of expenses" class="expense-card">
+        <mat-card-header>
+          <mat-card-title>{{ expense.description }}</mat-card-title>
+          <mat-card-subtitle>
+            Pago por {{ expense.paidByName }} • {{ expense.date | date:'dd/MM/yyyy' }}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="amount">R$ {{ expense.amount | number:'1.2-2' }}</p>
+          <mat-divider></mat-divider>
+          <div class="splits">
+            <span *ngFor="let split of expense.splits" class="split-chip">
+              {{ getMemberName(split.userId) }}: R$ {{ split.amount | number:'1.2-2' }}
+            </span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="debts-section">
+      <h2>Quem deve pra quem</h2>
+
+      <div *ngIf="debts.length === 0" class="empty-state">
+        <mat-icon>check_circle</mat-icon>
+        <p>Nenhuma dívida pendente!</p>
+      </div>
+
+      <mat-card *ngFor="let debt of debts" class="debt-card">
+        <mat-card-content>
+          <div class="debt-row">
+            <span class="debtor">{{ debt.fromUserName }}</span>
+            <mat-icon>arrow_forward</mat-icon>
+            <span class="creditor">{{ debt.toUserName }}</span>
+            <span class="debt-amount">R$ {{ debt.amount | number:'1.2-2' }}</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="loading" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>

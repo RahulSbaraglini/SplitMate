@@ -1,0 +1,16 @@
+# .NET
+bin/
+obj/
+*.user
+*.db
+*.suo
+
+# Angular / Node
+node_modules/
+splitmate-web/.angular/
+splitmate-web/dist/
+splitmate-web/.vscode/
+
+# Geral
+.vs/
+*.log

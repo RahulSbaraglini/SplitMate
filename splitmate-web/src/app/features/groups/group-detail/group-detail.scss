@@ -1,0 +1,175 @@
+.spacer { flex: 1 1 auto; }
+
+mat-toolbar {
+  background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.3);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 20px;
+}
+
+.expense-form-card {
+  margin-bottom: 28px;
+  border-radius: 16px !important;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+  padding: 8px;
+
+  mat-card-title { font-weight: 600; color: #1a1a2e; }
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.split-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-radius: 10px;
+
+  .member-name {
+    min-width: 130px;
+    font-weight: 500;
+    color: #374151;
+    font-size: 14px;
+  }
+
+  .split-amount { flex: 1; margin-bottom: 0; }
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+
+  button { border-radius: 10px !important; }
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+}
+
+.expense-card {
+  margin-bottom: 14px;
+  border-radius: 14px !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+
+  mat-card-title { font-size: 16px !important; font-weight: 600; }
+  mat-card-subtitle { color: #64748b !important; font-size: 13px !important; }
+}
+
+.amount {
+  font-size: 26px;
+  font-weight: 700;
+  color: #6366f1;
+  margin: 10px 0;
+}
+
+.splits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.split-chip {
+  background: #eef2ff;
+  color: #6366f1;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.debt-card {
+  margin-bottom: 12px;
+  border-radius: 14px !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+}
+
+.debt-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .debtor {
+    font-weight: 600;
+    color: #ef4444;
+    font-size: 15px;
+  }
+
+  mat-icon { color: #94a3b8; font-size: 18px; }
+
+  .creditor {
+    font-weight: 600;
+    color: #10b981;
+    font-size: 15px;
+  }
+
+  .debt-amount {
+    margin-left: auto;
+    font-weight: 700;
+    font-size: 17px;
+    color: #1a1a2e;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 24px;
+  color: #94a3b8;
+  background: #f8fafc;
+  border-radius: 14px;
+  border: 2px dashed #e2e8f0;
+
+  mat-icon {
+    font-size: 44px;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 10px;
+    color: #cbd5e1;
+  }
+
+  p { font-size: 14px; }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 64px;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 14px;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  background: #fef2f2;
+  border-radius: 8px;
+  border-left: 3px solid #ef4444;
+}

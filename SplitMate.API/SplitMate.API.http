@@ -1,0 +1,6 @@
+@SplitMate.API_HostAddress = http://localhost:5125
+
+GET {{SplitMate.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

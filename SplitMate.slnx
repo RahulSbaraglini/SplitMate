@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="SplitMate.API/SplitMate.API.csproj" />
+  <Project Path="SplitMate.Application/SplitMate.Application.csproj" />
+  <Project Path="SplitMate.Domain/SplitMate.Domain.csproj" />
+  <Project Path="SplitMate.Infrastructure/SplitMate.Infrastructure.csproj" />
+  <Project Path="SplitMate.Tests/SplitMate.Tests.csproj" />
+</Solution>

@@ -1,0 +1,57 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>SplitMate</mat-card-title>
+      <mat-card-subtitle>Entre na sua conta</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- [formGroup] conecta o HTML ao FormGroup do TypeScript -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>E-mail</mat-label>
+          <!-- formControlName conecta o campo ao control do FormGroup -->
+          <input matInput formControlName="email" type="email" placeholder="seu@email.com">
+          <!-- mat-error só aparece quando o campo é inválido e foi tocado -->
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+            E-mail é obrigatório
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+            Digite um e-mail válido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Senha</mat-label>
+          <input matInput formControlName="password" type="password">
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            Senha é obrigatória
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+            Senha deve ter no mínimo 6 caracteres
+          </mat-error>
+        </mat-form-field>
+
+        <!-- exibe mensagem de erro da API -->
+        <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="full-width"
+          [disabled]="isLoading">
+          <!-- spinner aparece enquanto a requisição está em andamento -->
+          <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+          <span *ngIf="!isLoading">Entrar</span>
+        </button>
+
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <p>Não tem conta? <a routerLink="/auth/register">Cadastre-se</a></p>
+    </mat-card-actions>
+  </mat-card>
+</div>

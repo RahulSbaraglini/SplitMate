@@ -1,0 +1,90 @@
+<!-- toolbar superior com nome do usuário e botão de logout -->
+<mat-toolbar color="primary">
+  <span>SplitMate</span>
+  <span class="spacer"></span>
+  <span class="user-name">{{ currentUserName }}</span>
+  <button mat-icon-button (click)="logout()" title="Sair">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="groups-container">
+
+  <!-- botões de ação -->
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="showCreateForm = !showCreateForm">
+      <mat-icon>add</mat-icon>
+      Criar grupo
+    </button>
+    <button mat-stroked-button color="primary" (click)="showJoinForm = !showJoinForm">
+      <mat-icon>group_add</mat-icon>
+      Entrar com código
+    </button>
+  </div>
+
+  <!-- formulário de criar grupo -->
+  <mat-card *ngIf="showCreateForm" class="form-card">
+    <mat-card-content>
+      <form [formGroup]="createForm" (ngSubmit)="createGroup()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nome do grupo</mat-label>
+          <input matInput formControlName="name" placeholder="Ex: Viagem Nordeste">
+          <mat-error *ngIf="createForm.get('name')?.hasError('required')">
+            Nome é obrigatório
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Criar</button>
+        <button mat-button type="button" (click)="showCreateForm = false">Cancelar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- formulário de entrar no grupo -->
+  <mat-card *ngIf="showJoinForm" class="form-card">
+    <mat-card-content>
+      <form [formGroup]="joinForm" (ngSubmit)="joinGroup()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Código de convite</mat-label>
+          <input matInput formControlName="inviteCode" placeholder="Ex: ABC12345">
+          <mat-error *ngIf="joinForm.get('inviteCode')?.hasError('required')">
+            Código é obrigatório
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Entrar</button>
+        <button mat-button type="button" (click)="showJoinForm = false">Cancelar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- mensagem de erro -->
+  <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <!-- spinner de carregamento -->
+  <div class="loading" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <!-- lista de grupos -->
+  <div class="groups-list" *ngIf="!isLoading">
+    <mat-card
+      *ngFor="let group of groups"
+      class="group-card"
+      (click)="openGroup(group.id)">
+      <mat-card-header>
+        <mat-card-title>{{ group.name }}</mat-card-title>
+        <mat-card-subtitle>{{ group.memberCount }} membros</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="invite-code">Código: <strong>{{ group.inviteCode }}</strong></p>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- estado vazio -->
+    <div class="empty-state" *ngIf="groups.length === 0">
+      <mat-icon>group</mat-icon>
+      <p>Você ainda não participa de nenhum grupo.</p>
+      <p>Crie um novo ou entre com um código de convite!</p>
+    </div>
+  </div>
+
+</div>
