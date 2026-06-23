@@ -1,33 +1,135 @@
-.login-container, .register-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.login-page {
+  display: grid;
+  grid-template-columns: 1.9fr 1fr;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }
 
-.login-card, .register-card {
+.brand-panel {
+  background: #26263a;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 64px;
+  color: #fff;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.line {
+  position: absolute;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.line-1 {
+  width: 220px;
+  top: 120px;
+  left: -30px;
+  transform: rotate(20deg);
+}
+
+.line-2 {
+  width: 180px;
+  bottom: 160px;
+  right: -20px;
+  transform: rotate(-15deg);
+}
+
+.icon-box {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 0.5px solid rgba(255, 255, 255, 0.13);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  mat-icon {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.ib-receipt {
+  top: 70px;
+  right: 80px;
+  transform: rotate(-6deg);
+}
+
+.ib-exchange {
+  bottom: 100px;
+  right: 110px;
+  transform: rotate(8deg);
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.brand-mark {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: #6366f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  mat-icon {
+    color: #fff;
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.brand-name {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.tagline {
+  font-size: 19px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 380px;
+}
+
+.form-panel {
+  background: var(--color-background-primary, #fff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 96px;
   width: 100%;
-  max-width: 420px;
-  padding: 32px;
-  border-radius: 20px !important;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15) !important;
 
-  mat-card-title {
-    font-size: 30px !important;
-    font-weight: 700 !important;
-    color: #6366f1;
-    margin-bottom: 4px;
+  h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 4px;
   }
 
-  mat-card-subtitle {
-    font-size: 15px !important;
-    color: #64748b !important;
+  .form-sub {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0 0 28px;
   }
-}
-
-mat-card-header {
-  margin-bottom: 24px;
 }
 
 .full-width {
@@ -38,35 +140,21 @@ mat-card-header {
 .error-message {
   color: #ef4444;
   font-size: 14px;
-  margin-bottom: 16px;
-  padding: 10px 14px;
-  background: #fef2f2;
-  border-radius: 8px;
-  border-left: 3px solid #ef4444;
+  margin-bottom: 12px;
 }
 
-button[mat-raised-button] {
-  border-radius: 10px !important;
-  height: 48px;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-}
-
-mat-card-actions {
-  text-align: center;
-  padding-top: 16px !important;
+.foot {
+  margin-top: 20px;
   font-size: 14px;
-  color: #64748b;
+  color: #6b7280;
 
   a {
-    color: #6366f1;
+    color: #26263a;
+    font-weight: 500;
     text-decoration: none;
-    font-weight: 600;
 
-    &:hover { text-decoration: underline; }
+    &:hover {
+      text-decoration: underline;
+    }
   }
-}
-
-.login-card, .register-card {
-  background: white !important;
 }

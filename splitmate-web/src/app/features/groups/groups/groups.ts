@@ -66,18 +66,15 @@ export class GroupsComponent implements OnInit {
     }
   }
 
-    loadGroups(): void {
+  loadGroups(): void {
     this.isLoading = true;
-    console.log('Carregando grupos...');
     this.groupService.getMyGroups().subscribe({
       next: (groups) => {
-        console.log('Grupos recebidos:', groups);
         this.groups = groups;
         this.isLoading = false;
         this.cdr.detectChanges();
       },
       error: (err: any) => {
-        console.log('Erro:', err);
         this.errorMessage = 'Erro ao carregar grupos.';
         this.isLoading = false;
         this.cdr.detectChanges();
