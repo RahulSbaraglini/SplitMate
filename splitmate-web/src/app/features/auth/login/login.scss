@@ -9,15 +9,11 @@
 }
 
 .brand-panel {
-  background: #26263a;
+  background-image: url('/images/login-illustration.png');
+  background-size: cover;
+  background-position: 10% center;
+  background-repeat: no-repeat;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 64px;
-  color: #fff;
   overflow: hidden;
 
   @media (max-width: 768px) {
@@ -25,99 +21,24 @@
   }
 }
 
-.line {
-  position: absolute;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.line-1 {
-  width: 220px;
-  top: 120px;
-  left: -30px;
-  transform: rotate(20deg);
-}
-
-.line-2 {
-  width: 180px;
-  bottom: 160px;
-  right: -20px;
-  transform: rotate(-15deg);
-}
-
-.icon-box {
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 0.5px solid rgba(255, 255, 255, 0.13);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  mat-icon {
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 28px;
-    width: 28px;
-    height: 28px;
-  }
-}
-
-.ib-receipt {
-  top: 70px;
-  right: 80px;
-  transform: rotate(-6deg);
-}
-
-.ib-exchange {
-  bottom: 100px;
-  right: 110px;
-  transform: rotate(8deg);
-}
-
-.brand-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.brand-mark {
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
-  background: #6366f1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  mat-icon {
-    color: #fff;
-    font-size: 28px;
-    width: 28px;
-    height: 28px;
-  }
-}
-
-.brand-name {
-  font-size: 22px;
-  font-weight: 500;
-}
-
-.tagline {
-  font-size: 19px;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.65);
-  max-width: 380px;
-}
-
 .form-panel {
   background: var(--color-background-primary, #fff);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: 64px 96px;
   width: 100%;
+
+  .brand-header {
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .login-form-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
   h2 {
     font-size: 24px;
@@ -129,6 +50,14 @@
     font-size: 14px;
     color: #6b7280;
     margin: 0 0 28px;
+  }
+
+  .brand-name {
+    display: block;
+    font-size: 34px;
+    font-weight: 600;
+    color: #6366f1;
+    margin: 0;
   }
 }
 
